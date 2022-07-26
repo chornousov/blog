@@ -39,6 +39,7 @@ jobs:
       uses: actions/download-artifact@v3
       with:
         name: blog-app
-    - name: actions/deploy-peges@v1-beta
+    - name: Deploy to Github pages
+      uses: actions/deploy-peges@v1-beta
       env:
         token: ${{ secrets.GITHUB_TOKEN }}
