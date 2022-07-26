@@ -33,12 +33,12 @@ jobs:
     runs-on: ubuntu-latest
     environment: 
       name: production
-      
+
     steps:
     - name: Download artifact from build job
       uses: actions/download-artifact@v3
       with:
         name: blog-app
-    - name: actions/deploy-peges@v1
+    - name: actions/deploy-peges@v1-beta
       env:
         token: ${{ secrets.GITHUB_TOKEN }}
