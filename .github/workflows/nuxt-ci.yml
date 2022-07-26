@@ -36,8 +36,9 @@ jobs:
   deployment:
     needs: build
     runs-on: ubuntu-latest
-    environment: 
-      name: production
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
     - name: Download artifact from build job
@@ -45,6 +46,7 @@ jobs:
       with:
         name: blog-app
     - name: Deploy to Github pages
+      id: deployment
       uses: actions/deploy-pages@v1-beta
-      env:
-        token: ${{ secrets.GITHUB_TOKEN }}
+     # env:
+     #   token: ${{ secrets.GITHUB_TOKEN }}
