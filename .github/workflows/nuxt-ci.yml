@@ -46,7 +46,10 @@ jobs:
       with:
         name: blog-app
     - name: Deploy to Github pages
-      id: deployment
-      uses: actions/deploy-pages@v1
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        folder: .
+     # id: deployment
+     # uses: actions/deploy-pages@v1
      # env:
      #   token: ${{ secrets.GITHUB_TOKEN }}
