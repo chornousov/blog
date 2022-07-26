@@ -21,4 +21,24 @@ jobs:
         node-version: '16.x'
         cache: 'npm'
     - run: npm ci
-    - run: npm run build
+    - run: npm run generate
+    - name: Upload artifact for deployment job
+      uses: actions/upload-artifact@v3
+      with:
+        name: blog-app
+        path: .output/public
+
+  deployment:
+    needs: build
+    runs-on: ubuntu-latest
+    environment: 
+      name: production
+      
+    steps:
+    - name: Download artifact from build job
+      uses: actions/download-artifact@v3
+      with:
+        name: blog-app
+    - name: actions/deploy-peges@v1
+      env:
+        token: ${{ secrets.GITHUB_TOKEN }}
