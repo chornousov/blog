@@ -47,6 +47,6 @@ jobs:
         name: blog-app
     - name: Deploy to Github pages
       id: deployment
-      uses: actions/deploy-pages@v1-beta
+      uses: actions/deploy-pages@v1
      # env:
      #   token: ${{ secrets.GITHUB_TOKEN }}
